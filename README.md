@@ -22,7 +22,15 @@
     - make an object for 'GoogleAuthProvider' and give any name as I want. firebase use only provider variable name but we can use anything for that. I use 'googleProvider' because I will use more provider like github, yahoo, microsoft etc.
     - skip optional step 3,4,5 
     - import 'getAuth, signInWithPopup' then calling getAuth().
-    - now I made a onClick function for google signIn method. and put that function into a button.
+    - now I made a onClick function(handleGoogleSignIn) for google signIn method. and put that function into a button.
     - calling the 'signInWithPopup' method and pass (auth, googleProvider) and receive the response and get the user data. in this time I have to use useState method to set the user data and when user is successfully loggedIn then set that user data.
     - I also destructure the user object data to show that in the UI.
-    * Note: If you 
+    * Note: If you use onclick function(handleGoogleSignIn) under the form then you should use preventDefault() function to stop the default reload process of form submission.
+    - So this is the process of google signIn using firebase authentication.
+
+# Github signIn system.
+    - enable github sign-in method as like as google sign-in method.
+    - but this time we need some additional configuration. Need to configure github Oauth application.
+    - goto github Oauth application and make new application. give an application name home url and provide 'authorization callback url' this url we can find when we enable github sign-in method. and It's not over yet.
+    - after complete the Oauth configuration we will get 'client Id' and 'client secret key' these two parameters have to add in the firebase github configuration.
+    - rest of the thing same as google. (coding part)
