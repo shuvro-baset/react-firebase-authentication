@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider  } from "firebase/auth"; 
+import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth"; 
 import initializeAuthentication from "../../Firebase/firebase.initialize"
 
 initializeAuthentication();
@@ -50,6 +50,8 @@ const Login = () => {
             console.log(error.message);
         })
       }
+
+    
     return (
         <div>
             <div className='col-md-6 d-flex justify-content-center align-items-center'>

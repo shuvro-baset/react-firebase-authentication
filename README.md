@@ -34,3 +34,4 @@
     - goto github Oauth application and make new application. give an application name home url and provide 'authorization callback url' this url we can find when we enable github sign-in method. and It's not over yet.
     - after complete the Oauth configuration we will get 'client Id' and 'client secret key' these two parameters have to add in the firebase github configuration.
     - rest of the thing same as google. (coding part)
+
