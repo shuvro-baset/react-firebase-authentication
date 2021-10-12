@@ -35,3 +35,6 @@
     - after complete the Oauth configuration we will get 'client Id' and 'client secret key' these two parameters have to add in the firebase github configuration.
     - rest of the thing same as google. (coding part)
 
+# route set up
+    - install 'react-router-dom'. We use this module for linking different pages. Though react is single page application so we use 'to' & 'path' attribute instead of 'a' tag.
+    - after installation 'react-router-dom' we use BrowserRouter as Router. then set switch and route. for details you can see the react router documentation.
