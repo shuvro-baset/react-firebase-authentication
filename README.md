@@ -15,3 +15,14 @@
     - That's all for the firebase configuration.
 
 # google sign-in system
+    - go to docs> build> authentication> web> googleSignIn> read the documentation
+    - for google sign in system I have to enable google sign-in and I already did it before.
+    - at first I import google auth provider from firebase auth 
+        'import { GoogleAuthProvider } from "firebase/auth";' I use this in login.js file.
+    - make an object for 'GoogleAuthProvider' and give any name as I want. firebase use only provider variable name but we can use anything for that. I use 'googleProvider' because I will use more provider like github, yahoo, microsoft etc.
+    - skip optional step 3,4,5 
+    - import 'getAuth, signInWithPopup' then calling getAuth().
+    - now I made a onClick function for google signIn method. and put that function into a button.
+    - calling the 'signInWithPopup' method and pass (auth, googleProvider) and receive the response and get the user data. in this time I have to use useState method to set the user data and when user is successfully loggedIn then set that user data.
+    - I also destructure the user object data to show that in the UI.
+    * Note: If you 

@@ -1,25 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"; 
+import initializeAuthentication from "../../Firebase/firebase.initialize"
 
+initializeAuthentication();
+// auth provider object. We can give any name for this object.
+const googleProvider = new GoogleAuthProvider();
 const Login = () => {
+
+    // use State method for loggedInUser
+    const [user, setUser] = useState({})
+    const auth = getAuth();
+
+    const handleGoogleSignIn = (e) => {
+        console.log("i am clicked");
+        e.preventDefault();
+        signInWithPopup(auth, googleProvider)
+        .then((result) => {
+            // destructuring user data.
+            const { displayName, email, photoURL } = result.user;
+            const loggedInUser = {
+                name: displayName,
+                email: email,
+                photo: photoURL
+        };
+        setUser(loggedInUser);
+      })
+        .catch(error => {
+            console.log(error.message);
+        })
+      }
     return (
         <div>
             <div className='col-md-6 d-flex justify-content-center align-items-center'>
-            <form>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" />
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-danger">sign-in with Google</button>
-                    <button type="submit" class="btn btn-warning">sign-in with Github</button>
-                </div>
-            </form>
-        </div>
+                <form>
+                    <div className="mb-3">
+                        <label  className="form-label">Email address</label>
+                        <input type="email" className="form-control"  aria-describedby="emailHelp" />
+                    </div>
+                    <div className="mb-3">
+                        <label  className="form-label">Password</label>
+                        <input type="password" className="form-control"  />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Login</button>
+                    <div className="mb-3">
+                        <button className="btn btn-danger" onClick={handleGoogleSignIn}>sign-in with Google</button>
+                        <button type="submit" className="btn btn-warning">sign-in with Github</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                {
+                    user.name && <div>
+                    <h2>Welcome {user.name}</h2>
+                    <p>I know your email address: {user.email}</p>
+                    <img src={user.photo} alt="" />
+                    </div>
+                }
+            </div>
         </div>
     );
 };
