@@ -53,8 +53,9 @@ const Login = () => {
 
     
     return (
-        <div>
-            <div className='col-md-6 d-flex justify-content-center align-items-center'>
+        <div className="d-flex justify-content-center align-items-center">
+            <div className='col-md-5 mt-5'>
+                <h2>Login system</h2>
                 <form>
                     <div className="mb-3">
                         <label  className="form-label">Email address</label>

@@ -2,7 +2,10 @@ import React from 'react';
 
 const Registration = () => {
     return (
-        <div className='col-md-6 d-flex justify-content-center align-items-center'>
+
+        <div className="d-flex justify-content-center align-items-center">
+            <div className='col-md-6 mt-5'>
+                <h2>Registration page</h2>
             <form>
                 <div className="mb-3">
                     <label  className="form-label">Email address</label>
@@ -15,6 +18,9 @@ const Registration = () => {
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
+
+        </div>
+        
     );
 };
 

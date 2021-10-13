@@ -28,13 +28,15 @@ function App() {
           </Route>
           <Route path="/login">
             <Login></Login>
-            <Registration></Registration>      
           </Route>
           <Route path="/about">
             <About></About>
           </Route>
           <Route path="/service">
             <Service></Service>
+          </Route>
+          <Route path="/registration">
+            <Registration></Registration>
           </Route>
         </Switch>
       </Router>
