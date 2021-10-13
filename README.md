@@ -40,3 +40,6 @@
     - after installation 'react-router-dom' we use BrowserRouter as Router. then set switch and route then inside the route we call the component. for details you can see the react router documentation.
 
 # sign-in with email and password
+    - Before applying email & password login system I need a form to get user input email and password. So I make a form design.
+    - to take user input value I can use onBlur or onChange method. I prefer onBlur.
+    
