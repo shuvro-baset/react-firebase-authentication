@@ -14,6 +14,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
     const auth = getAuth();
 
     // Google signIn handler function.
@@ -30,6 +31,9 @@ const Login = () => {
                 photo: photoURL
         };
         setUser(loggedInUser);
+        setMessage("Successfully logged in!");
+        setError("");
+
       })
         .catch(error => {
             console.log(error.message);
@@ -49,6 +53,9 @@ const Login = () => {
                 photo: photoURL
         };
         setUser(loggedInUser);
+        setMessage("Successfully logged in!");
+        setError("");
+
       })
         .catch(error => {
             console.log(error.message);
@@ -79,10 +86,12 @@ const Login = () => {
         }
             setUser(loggedInUser);
             console.log(loggedInUser)
-            setError('');
+            setMessage("Successfully logged in!");
+            setError("");
           })
           .catch(error => {
             setError(error.message);
+            setMessage("")
           })
       }
     return (
@@ -98,6 +107,13 @@ const Login = () => {
                         <label  className="form-label">Password</label>
                         <input onBlur={handlePasswordChange} type="password" className="form-control"  />
                     </div>
+                    {
+                        error && 
+                        <div className="row mb-3 text-danger">{error}</div>
+                    }
+                    {   message &&
+                        <div className="row mb-3 text-success">{message}</div>
+                    }
                     <button onClick={processLogin} type="submit" className="btn btn-primary">Login</button>
                     <Link to="/registration" className="btn btn-primary">Register</Link>
                     <div className="mb-3">
