@@ -15,13 +15,13 @@ const Registration = () => {
     const handleNameChange = e => {
         setName(e.target.value);
       }
-      const handleEmailChange = e => {
-        setEmail(e.target.value);
-      }
-    
-      const handlePasswordChange = e => {
-        setPassword(e.target.value)
-      }
+    const handleEmailChange = e => {
+    setEmail(e.target.value);
+    }
+
+    const handlePasswordChange = e => {
+    setPassword(e.target.value)
+    }
 
       // handling new register user by giving name, email and password
       const handleRegistration = e => {

@@ -58,17 +58,27 @@ const Login = () => {
     // getting email and password from user input data
     const handleEmailChange = e => {
         setEmail(e.target.value);
+        console.log(e.target.value);
         }
     
     const handlePasswordChange = e => {
-    setPassword(e.target.value)
+        setPassword(e.target.value)
+        console.log(e.target.value);
     }
     // login functionality for registered user accounts
-    const processLogin = (email, password) => {
+    const processLogin = (e) => {
+        e.preventDefault()
+        console.log("login processing.... ");
         signInWithEmailAndPassword(auth, email, password)
           .then(result => {
-            const user = result.user;
-            console.log(user);
+            const { displayName, email, photoURL } = result.user;
+            const loggedInUser = {
+                name: displayName,
+                email: email,
+                photo: photoURL
+        }
+            setUser(loggedInUser);
+            console.log(loggedInUser)
             setError('');
           })
           .catch(error => {
@@ -79,7 +89,7 @@ const Login = () => {
         <div className="d-flex justify-content-center align-items-center">
             <div className='col-md-5 mt-5'>
                 <h2>Login system</h2>
-                <form on>
+                <form>
                     <div className="mb-3">
                         <label  className="form-label">Email address</label>
                         <input onBlur={handleEmailChange} type="email" className="form-control"  aria-describedby="emailHelp" />
@@ -88,7 +98,7 @@ const Login = () => {
                         <label  className="form-label">Password</label>
                         <input onBlur={handlePasswordChange} type="password" className="form-control"  />
                     </div>
-                    <button type="submit" onClick={processLogin} className="btn btn-primary">Login</button>
+                    <button onClick={processLogin} type="submit" className="btn btn-primary">Login</button>
                     <Link to="/registration" className="btn btn-primary">Register</Link>
                     <div className="mb-3">
                         <button className="btn btn-danger" onClick={handleGoogleSignIn}>sign-in with Google</button>
@@ -98,7 +108,7 @@ const Login = () => {
             </div>
             <div>
                 {
-                    user.name && <div>
+                    user.email && <div>
                     <h2>Welcome {user.name}</h2>
                     <p>I know your email address: {user.email}</p>
                     <img src={user.photo} alt="" />

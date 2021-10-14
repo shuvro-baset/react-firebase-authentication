@@ -49,3 +49,9 @@
     - firebase take at lease 6 characters password. So I should handle this error and show the error message to the user.
     - set error using useState method. then show this error message to the user.
     - I also set a email validation.
+    
+# sign-in by registered user (email, password) 
+    - using 'createUserWithEmailAndPassword' this method we create a new user and that save into our firebase application. So now time to create a login system for this user providing email and password.
+    - I do this system in the login.js file. In that file previously I do google and github sign-in system. 
+    - so here we need to provide email and password from the user. So I do the same(using onBlur and receive email and password) as when I register a new user.
+    - import 'signInWithEmailAndPassword' and then calling this method under the 'processLogin' method. this 'processLogin' is called when user clicked on login button. so I pass the (auth, email, password) into 'signInWithEmailAndPassword' function and if the email and password are correct then it loggedIn the user and show the welcome message and email in the Ui.
