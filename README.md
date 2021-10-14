@@ -42,4 +42,10 @@
 # sign-in with email and password
     - Before applying email & password login system I need a form to get user input email and password. So I make a form design.
     - to take user input value I can use onBlur or onChange method. I prefer onBlur.
-    
+    - make a function(handleNameChange, handleEmailChange, handlePasswordChange) that receive input value from user.
+    - use useState method and set onchange name, email, password.
+    - our email and password is ready. Now I will import a "createUserWithEmailAndPassword" from firebase auth.
+    - in the form tag I use onSubmit={handleRegistration}. under this function I called 'createUserWithEmailAndPassword' this method and pass 3 params( auth, email, password) and it creates a new user.
+    - firebase take at lease 6 characters password. So I should handle this error and show the error message to the user.
+    - set error using useState method. then show this error message to the user.
+    - I also set a email validation.
