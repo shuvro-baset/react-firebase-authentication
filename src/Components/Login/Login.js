@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth"; 
+import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword  } from "firebase/auth"; 
 import initializeAuthentication from "../../Firebase/firebase.initialize"
+import { Link } from 'react-router-dom';
 
 initializeAuthentication();
 // auth provider object. We can give any name for this object.
@@ -10,6 +11,9 @@ const Login = () => {
 
     // use State method for loggedInUser
     const [user, setUser] = useState({})
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const auth = getAuth();
 
     // Google signIn handler function.
@@ -51,7 +55,26 @@ const Login = () => {
         })
       }
 
+    // getting email and password from user input data
+    const handleEmailChange = e => {
+        setEmail(e.target.value);
+        }
     
+    const handlePasswordChange = e => {
+    setPassword(e.target.value)
+    }
+    // login functionality for registered user accounts
+    const processLogin = (email, password) => {
+        signInWithEmailAndPassword(auth, email, password)
+          .then(result => {
+            const user = result.user;
+            console.log(user);
+            setError('');
+          })
+          .catch(error => {
+            setError(error.message);
+          })
+      }
     return (
         <div className="d-flex justify-content-center align-items-center">
             <div className='col-md-5 mt-5'>
@@ -59,13 +82,14 @@ const Login = () => {
                 <form on>
                     <div className="mb-3">
                         <label  className="form-label">Email address</label>
-                        <input type="email" className="form-control"  aria-describedby="emailHelp" />
+                        <input onBlur={handleEmailChange} type="email" className="form-control"  aria-describedby="emailHelp" />
                     </div>
                     <div className="mb-3">
                         <label  className="form-label">Password</label>
-                        <input type="password" className="form-control"  />
+                        <input onBlur={handlePasswordChange} type="password" className="form-control"  />
                     </div>
-                    <button type="submit" className="btn btn-primary">Login</button>
+                    <button type="submit" onClick={processLogin} className="btn btn-primary">Login</button>
+                    <Link to="/registration" className="btn btn-primary">Register</Link>
                     <div className="mb-3">
                         <button className="btn btn-danger" onClick={handleGoogleSignIn}>sign-in with Google</button>
                         <button className="btn btn-warning" onClick={GithubSignInHandler}>sign-in with Github</button>

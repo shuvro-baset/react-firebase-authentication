@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword  } from "firebase/auth"; 
 import initializeAuthentication from "../../Firebase/firebase.initialize"
+import { Link } from 'react-router-dom';
 
 initializeAuthentication();
 const Registration = () => {
@@ -9,7 +10,6 @@ const Registration = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [isLogin, setIsLogin] = useState(false);
     const auth = getAuth();
 
     const handleNameChange = e => {
@@ -43,13 +43,6 @@ const Registration = () => {
         })
         
     
-        // if (isLogin) {
-        //   processLogin(email, password);
-        // }
-        // else {
-        //   registerNewUser(email, password);
-        // }
-    
       }
     
     return (
@@ -72,7 +65,10 @@ const Registration = () => {
                     <div className="row mb-3 text-danger">{error}</div>
                     <button type="submit" className="btn btn-primary">Register</button>
                 </form>
+                <br />
+                <h5>Already Registered? login from here <Link to="/login">Login</Link> </h5>
             </div>
+
             <div>
                 {/* {
                     user.name && <div>
