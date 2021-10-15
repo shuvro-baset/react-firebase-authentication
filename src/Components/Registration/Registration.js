@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword  } from "firebase/auth"; 
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile  } from "firebase/auth"; 
 import initializeAuthentication from "../../Firebase/firebase.initialize"
 import { Link } from 'react-router-dom';
 
@@ -23,15 +23,15 @@ const Registration = () => {
     setPassword(e.target.value)
     }
 
-      // handling new register user by giving name, email and password
-      const handleRegistration = e => {
+    // handling new register user by giving name, email and password
+    const handleRegistration = e => {
         // ignoring default reload method of form tag
         e.preventDefault();
         // validating password length.
         if (password.length < 6) {
             setError('Password Must be at least 6 characters long.')
             return;
-          }
+            }
         if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
             setError('Password Must contain 2 upper case');
         return;
@@ -40,11 +40,22 @@ const Registration = () => {
         .then(result => {
             const user = result.user; 
             console.log(user);
-        })
-        
-    
+            verifyEmail() 
+            setUserName()
+    })
+    }
+    // update username function
+    const setUserName = () => {
+        updateProfile(auth.currentUser, { displayName: name })
+          .then(result => { })
       }
-    
+    // verification email send
+    const verifyEmail = () => {
+    sendEmailVerification(auth.currentUser)
+        .then(result => {
+        console.log(result);
+        })
+      }
     return (
         <div className="d-flex justify-content-center align-items-center">
             <div className='col-md-5 mt-5'>
@@ -69,15 +80,7 @@ const Registration = () => {
                 <h5>Already Registered? login from here <Link to="/login">Login</Link> </h5>
             </div>
 
-            <div>
-                {/* {
-                    user.name && <div>
-                    <h2>Welcome {user.name}</h2>
-                    <p>I know your email address: {user.email}</p>
-                    <img src={user.photo} alt="" />
-                    </div>
-                } */}
-            </div>
+            
         </div>
     );
 };

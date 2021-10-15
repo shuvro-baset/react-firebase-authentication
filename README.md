@@ -55,3 +55,14 @@
     - I do this system in the login.js file. In that file previously I do google and github sign-in system. 
     - so here we need to provide email and password from the user. So I do the same(using onBlur and receive email and password) as when I register a new user.
     - import 'signInWithEmailAndPassword' and then calling this method under the 'processLogin' method. this 'processLogin' is called when user clicked on login button. so I pass the (auth, email, password) into 'signInWithEmailAndPassword' function and if the email and password are correct then it loggedIn the user and show the welcome message and email in the Ui.
+
+# email verification
+    - When new user is created I send a verification email to that user email address.
+    - at first import (sendEmailVerification) and put this function under the 'verification' function. it takes (auth.currentUser) as a params.
+    - call 'verification' this function under the 'handleRegistration' function.
+# update Profile (user name)    
+    - we can update our user account providing valid data like - name, photo...
+    - for this feature at first need to import 'updateProfile' 
+    - I make another function (setUserName). Under this function I call 'updateProfile' function and pass required (auth.currentUser, { displayName: name })property that I want to update. 
+# Reset password
+    - same process just different function. 'sendPasswordResetEmail' this function will send an email to my registered email and give a link to change new password.

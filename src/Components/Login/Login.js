@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword  } from "firebase/auth"; 
+import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, sendPasswordResetEmail  } from "firebase/auth"; 
 import initializeAuthentication from "../../Firebase/firebase.initialize"
 import { Link } from 'react-router-dom';
 
@@ -94,6 +94,11 @@ const Login = () => {
             setMessage("")
           })
       }
+    // password reset function 
+    const handleResetPassword = () => {
+        sendPasswordResetEmail(auth, email)
+          .then(result => { })
+      }
     return (
         <div className="d-flex justify-content-center align-items-center">
             <div className='col-md-5 mt-5'>
@@ -116,6 +121,7 @@ const Login = () => {
                     }
                     <button onClick={processLogin} type="submit" className="btn btn-primary">Login</button>
                     <Link to="/registration" className="btn btn-primary">Register</Link>
+                    <button onClick={handleResetPassword} className="btn btn-primary">Reset Password</button>
                     <div className="mb-3">
                         <button className="btn btn-danger" onClick={handleGoogleSignIn}>sign-in with Google</button>
                         <button className="btn btn-warning" onClick={GithubSignInHandler}>sign-in with Github</button>
