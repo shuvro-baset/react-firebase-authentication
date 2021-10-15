@@ -4,6 +4,7 @@ import About from './Components/About/About';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Navbar from './Components/Navbar/Navbar';
+import NotFound from './Components/NotFound/NotFound';
 import Registration from './Components/Registration/Registration';
 import Service from './Components/Service/Service';
 import initializeAuthentication from './Firebase/firebase.initialize';
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/registration">
             <Registration></Registration>
+          </Route>
+          <Route path="*">
+            <NotFound></NotFound>
           </Route>
         </Switch>
       </Router>
