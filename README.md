@@ -75,3 +75,5 @@
 
 # ---------- Hooks --------------
     - In the above system is not good practice. Sometimes we don't use sign-in sing-up functionality just for the single page. Sometimes It needs in the different pages.
+    - So I made a new folder in the 'src' directory called 'hooks' then make a file called (useFirebase.js). I will put all the functionality in this file and use it in the page where I need.
+    
