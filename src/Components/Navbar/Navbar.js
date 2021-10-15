@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
+    const {user, logout} = useAuth();
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -21,15 +23,13 @@ const Navbar = () => {
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/service">services</NavLink>
                     </li>
-                    <li className="nav-item">
+                    { !user.email && <li className="nav-item">
                         <NavLink className="nav-link " to="/login">Login</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link " to="/logout" >LogOut</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link " to="/registration">Registration</NavLink>
-                    </li>
+                    </li>}
+                    { user.email && <li className="nav-item">
+                        <NavLink className="nav-link " onClick={logout} to="/home" >LogOut</NavLink>
+                    </li>}
+                    
                 </ul>
                 <form className="d-flex">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

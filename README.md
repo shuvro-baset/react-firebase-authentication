@@ -92,3 +92,7 @@
     - Now we will use 'useAuth' instead of 'useFirebase' into login and registration page.
     
     * this useContext method and context provider actually do the same thing smartly. Like Now in the app.js we use (AuthProvider) under the (AuthProvider) we pass all route and component. So that all the components will get these functionality from useAuth.
+
+# ---------- Private Route -------- 
+    - Private route for some restriction. Like when user is logged in then I don't want to show some page to the user.
+    
