@@ -5,6 +5,7 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Navbar from './Components/Navbar/Navbar';
 import NotFound from './Components/NotFound/NotFound';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Registration from './Components/Registration/Registration';
 import Service from './Components/Service/Service';
 import AuthProvider from './context/AuthProvider';
@@ -32,12 +33,12 @@ function App() {
           <Route path="/login">
             <Login></Login>
           </Route>
-          <Route path="/about">
+          <PrivateRoute path="/about">
             <About></About>
-          </Route>
-          <Route path="/service">
+          </PrivateRoute>
+          <PrivateRoute path="/service">
             <Service></Service>
-          </Route>
+          </PrivateRoute>
           <Route path="/registration">
             <Registration></Registration>
           </Route>

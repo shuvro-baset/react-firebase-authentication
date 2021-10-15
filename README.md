@@ -94,5 +94,9 @@
     * this useContext method and context provider actually do the same thing smartly. Like Now in the app.js we use (AuthProvider) under the (AuthProvider) we pass all route and component. So that all the components will get these functionality from useAuth.
 
 # ---------- Private Route -------- 
-    - Private route for some restriction. Like when user is logged in then I don't want to show some page to the user.
-    
+    - Private route use for some restriction. Like when user is not logged in then I don't want to show some page to the user. And redirect that user to the login page.
+    - Making a new component called 'PrivateRoute' and create a file 'PrivateRoute.js' under this directory.
+    - import route, redirect.
+    - passing (children, ...rest) property. Here 'children' means that component which we use private route. '...rest' means that rest of the component. 
+    - if user is logged in then it render that children components. If not logged in then redirect to the login page.
+    - Make sure that in the app.js Route change into PrivateRoute, So that PrivateRoute behavior will happen successfully.
