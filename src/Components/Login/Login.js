@@ -2,7 +2,8 @@ import React from 'react';
 // import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, sendPasswordResetEmail  } from "firebase/auth"; 
 // import initializeAuthentication from "../../Firebase/firebase.initialize"
 import { Link } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
+import useAuth from '../../hooks/useAuth';
+// import useFirebase from '../../hooks/useFirebase';
 
 // initializeAuthentication();
 // // auth provider object. We can give any name for this object.
@@ -11,7 +12,7 @@ import useFirebase from '../../hooks/useFirebase';
 const Login = () => {
 
 
-    const {user, handleEmailChange, handlePasswordChange, error, message, processLogin, handleResetPassword, handleGoogleSignIn, GithubSignInHandler} = useFirebase();
+    const {user, handleEmailChange, handlePasswordChange, error, message, processLogin, handleResetPassword, handleGoogleSignIn, GithubSignInHandler} = useAuth();
     // use State method for loggedInUser
     // const [user, setUser] = useState({})
     // const [email, setEmail] = useState('');

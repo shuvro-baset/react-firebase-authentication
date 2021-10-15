@@ -76,4 +76,19 @@
 # ---------- Hooks --------------
     - In the above system is not good practice. Sometimes we don't use sign-in sing-up functionality just for the single page. Sometimes It needs in the different pages.
     - So I made a new folder in the 'src' directory called 'hooks' then make a file called (useFirebase.js). I will put all the functionality in this file and use it in the page where I need.
+    - return all function. And export default main function so that when we use this useFirebase() function any different file then it helps to use any functionality.
+
+# ---------- Context --------
+    - Create a new folder under the src directory and make a file called 'AuthProvider.js'
+    - Its a component that take children and provide a value.
+    - calling 'createContext' method from react and set this in the 'authContext' variable.
+    - As we pass the children property so we use destructure and pass that children property under the 'authContext'
+    - make a variable called 'allContext' and pass the useFirebase object.
+    - pass the 'allContext' into the 'authContext.Provider'.
+    - make a new file called 'useAuth.js' in the hooks directory.
+    - create a new function 'useAuth' 
+    - calling 'useContext' method from react. 
+    - passing 'authContext' into 'useContext'
+    - Now we will use 'useAuth' instead of 'useFirebase' into login and registration page.
     
+    * this useContext method and context provider actually do the same thing smartly. Like Now in the app.js we use (AuthProvider) under the (AuthProvider) we pass all route and component. So that all the components will get these functionality from useAuth.

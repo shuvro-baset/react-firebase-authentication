@@ -7,6 +7,7 @@ import Navbar from './Components/Navbar/Navbar';
 import NotFound from './Components/NotFound/NotFound';
 import Registration from './Components/Registration/Registration';
 import Service from './Components/Service/Service';
+import AuthProvider from './context/AuthProvider';
 import initializeAuthentication from './Firebase/firebase.initialize';
 
 
@@ -18,6 +19,7 @@ function App() {
   
   return (
     <>
+      <AuthProvider>
       <Router>
       <Navbar></Navbar>
         <Switch>
@@ -44,6 +46,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      </AuthProvider>
       
     </>
     )

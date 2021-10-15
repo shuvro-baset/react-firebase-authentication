@@ -2,12 +2,13 @@ import React from 'react';
 // import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile  } from "firebase/auth"; 
 // import initializeAuthentication from "../../Firebase/firebase.initialize"
 import { Link } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
+import useAuth from '../../hooks/useAuth';
+// import useFirebase from '../../hooks/useFirebase';
 
 // initializeAuthentication();
 const Registration = () => {
 
-    const {user,  handleRegistration, handleNameChange, handleEmailChange,handlePasswordChange ,error , message} = useFirebase();
+    const {user,  handleRegistration, handleNameChange, handleEmailChange,handlePasswordChange ,error , message} = useAuth();
     // use State method for set name,email, password, error, isLogin
     // const [name, setName] = useState('');
     // const [email, setEmail] = useState('');

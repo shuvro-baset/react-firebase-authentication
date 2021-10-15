@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider,createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, sendEmailVerification } from "firebase/auth"; 
+    signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, sendEmailVerification, onAuthStateChanged, signOut } from "firebase/auth"; 
 import initializeAuthentication from '../Firebase/firebase.initialize';
 
 initializeAuthentication();
@@ -138,6 +138,21 @@ const handleResetPassword = () => {
     sendPasswordResetEmail(auth, email)
       .then(result => { })
   }
+// logout functionality
+const logout = () => {
+  signOut(auth)
+      .then(() => {
+          setUser({});
+      })
+}
+  // set user when user logged in. this is firebase default behavior that firebase can save the user if logged in.
+  useEffect(() => {
+    onAuthStateChanged(auth, user => {
+        if (user) {
+            setUser(user);
+        }
+    })
+}, []);
 
 
   return {
@@ -151,7 +166,7 @@ const handleResetPassword = () => {
       handleEmailChange,
       handlePasswordChange,
       handleRegistration,
-      handleNameChange
+      handleNameChange, logout
   }
 }
 
